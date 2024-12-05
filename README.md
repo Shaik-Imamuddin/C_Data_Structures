@@ -1,6 +1,5 @@
 # C_Data_Structures
 
-
 Basic Linked List Questions
 ->Write a program to create a singly linked list and display its elements.
 ->Insert a node at the beginning, middle, and end of a singly linked list.
