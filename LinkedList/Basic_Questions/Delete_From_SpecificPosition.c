@@ -63,7 +63,8 @@ struct node* insert_at_position(struct node *head, int data, int position) {
         return new_node;
     }
     struct node *temp = head;
-    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+    int i;
+    for (i = 1; i < position - 1 && temp != NULL; i++) {
         temp = temp->link;
     }
     if (temp == NULL) {
@@ -91,8 +92,8 @@ struct node* delete_from_position(struct node *head, int position) {
     }
     struct node *temp = head;
     struct node *prev = NULL;
-
-    for (int i = 1; i < position && temp != NULL; i++) {
+	int i;
+    for (i = 1; i < position && temp != NULL; i++) {
         prev = temp;
         temp = temp->link;
     }
