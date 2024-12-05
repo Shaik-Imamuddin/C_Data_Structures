@@ -20,7 +20,6 @@ Intermediate Questions
 ->Swap two nodes in a linked list without swapping data.
 
 Advanced Questions
-
 ->Flatten a multilevel doubly linked list.
 ->Clone a linked list with random pointers.
 ->Sort a linked list using merge sort.
