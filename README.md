@@ -9,7 +9,6 @@ Basic Linked List Questions
 ->Reverse a singly linked list.
 ->Merge two sorted linked lists into a single sorted list.
 
-
 Intermediate Questions
 ->Find the nth node from the end of a linked list.
 ->Detect a loop in a linked list and remove it.
@@ -21,7 +20,6 @@ Intermediate Questions
 ->Swap two nodes in a linked list without swapping data.
 
 Advanced Questions
-
 ->Flatten a multilevel doubly linked list.
 ->Clone a linked list with random pointers.
 ->Sort a linked list using merge sort.
