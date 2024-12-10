@@ -43,7 +43,8 @@ struct node* insert_at_end(struct node *head, int data) {
         temp = temp->link;
     }
     temp->link = new_node;
-    return head;
+    return head;            //it will return all the nodes creted 
+                            // to the variable assigned in function calling
 }
 
 int main() {

@@ -33,12 +33,13 @@ void display_list(struct node *head) {
         printf("%d ", temp->data);
         temp = temp->link;
     }
+    printf("\n");
 }
 struct node* insert_at_beginning(struct node *head, int data) {
     struct node *new_node = create_node(data);  
     new_node->link = head;  //create aina node link ni head value tho update chestam
     head = new_node;    //head  ni insert method lo unde  new node lo unde value tho update chestam
-    return new_node;    //new_node oda address return agum
+    return new_node;    //new_node la irkura value return agum
 }
 int main() {
     struct node *head = NULL;
