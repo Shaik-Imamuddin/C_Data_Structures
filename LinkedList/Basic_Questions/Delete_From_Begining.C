@@ -3,7 +3,6 @@
 
 struct Node {
     int data;
-    struct Node* prev;
     struct Node* next;
 };
 
@@ -14,7 +13,6 @@ struct Node* createNode(int data) {
         exit(1);
     }
     newNode->data = data;
-    newNode->prev = NULL;
     newNode->next = NULL;
     return newNode;
 }
@@ -39,7 +37,6 @@ struct Node* insertAtEnd(struct Node* head, int data) {
         temp = temp->next;
     }
     temp->next = newNode;
-    newNode->prev = temp;
     return head;
 }
 
@@ -50,9 +47,6 @@ struct Node* deleteFromBeginning(struct Node* head) {
     }
     struct Node* temp = head;
     head = head->next;
-    if (head != NULL) {
-        head->prev = NULL;
-    }
     free(temp);
     return head;
 }
@@ -72,4 +66,3 @@ int main() {
 
     return 0;
 }
-
