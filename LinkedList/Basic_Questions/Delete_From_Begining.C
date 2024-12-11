@@ -3,7 +3,7 @@
 
 struct Node {
     int data;
-    struct Node* next;
+    struct Node* link;
 };
 
 struct Node* createNode(int data) {
@@ -13,7 +13,7 @@ struct Node* createNode(int data) {
         exit(1);
     }
     newNode->data = data;
-    newNode->next = NULL;
+    newNode->link = NULL;
     return newNode;
 }
 
@@ -22,7 +22,7 @@ void displayList(struct Node* head) {
     printf("Linked List elements: ");
     while (current != NULL) {
         printf("%d ", current->data);
-        current = current->next;
+        current = current->link;
     }
     printf("\n");
 }
@@ -33,10 +33,10 @@ struct Node* insertAtEnd(struct Node* head, int data) {
         return newNode;
     }
     struct Node* temp = head;
-    while (temp->next != NULL) {
-        temp = temp->next;
+    while (temp->link != NULL) {
+        temp = temp->link;
     }
-    temp->next = newNode;
+    temp->link = newNode;
     return head;
 }
 
@@ -46,7 +46,7 @@ struct Node* deleteFromBeginning(struct Node* head) {
         return NULL;
     }
     struct Node* temp = head;
-    head = head->next;
+    head = head->link;
     free(temp);
     return head;
 }
