@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+
 struct Stack {
     char *data;
     int top;
     int capacity;
 };
+
 struct Stack* createStack(int capacity) {
     struct Stack *stack = (struct Stack *)malloc(sizeof(struct Stack));
     stack->data = (char *)malloc(capacity * sizeof(char));
