@@ -7,18 +7,6 @@ struct node {
     struct node *link;
 };
 
-// Function to create a new node
-struct node* create_node(int data) {
-    struct node *new_node = (struct node *)malloc(sizeof(struct node));
-    if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
-        exit(1);
-    }
-    new_node->data = data;
-    new_node->link = NULL;
-    return new_node;
-}
-
 // Function to display the linked list
 void display_list(struct node *head) {
     if (head == NULL) {
@@ -33,17 +21,25 @@ void display_list(struct node *head) {
     printf("\n");
 }
 
-// Function to insert at the end of the list
+// Function to insert at the end of the list (node creation integrated)
 struct node* insert_at_end(struct node *head, int data) {
-    struct node *new_node = create_node(data);
-    if (head == NULL) {
-        return new_node;
+    struct node *new_node = (struct node *)malloc(sizeof(struct node));
+    if (new_node == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(1);
     }
+    new_node->data = data;
+    new_node->link = NULL;
+
+    if (head == NULL) {
+        return new_node; // Return the new node as the head
+    }
+
     struct node *temp = head;
     while (temp->link != NULL) {
         temp = temp->link;
     }
-    temp->link = new_node;
+    temp->link = new_node; // Attach the new node at the end
     return head;
 }
 
@@ -78,7 +74,14 @@ struct node* sort_linked_list(struct node *head) {
 
 // Function to merge two sorted linked lists
 struct node* merge_sorted_lists(struct node *head1, struct node *head2) {
-    struct node *dummy = create_node(0);
+    struct node *dummy = (struct node *)malloc(sizeof(struct node));
+    if (dummy == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(1);
+    }
+    dummy->data = 0;
+    dummy->link = NULL;
+
     struct node *current = dummy;
 
     // Merge both lists until one is exhausted
@@ -142,4 +145,3 @@ int main() {
 
     return 0;
 }
-
