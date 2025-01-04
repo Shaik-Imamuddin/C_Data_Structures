@@ -1,64 +1,74 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the structure for a node
-struct node {
+// Structure of a node
+struct Node {
     int data;
-    struct node *link;
+    struct Node *addr;
 };
 
-// Function to create a new node
-struct node* create_node(int data) {
-    struct node *new_node = (struct node *)malloc(sizeof(struct node)); //Based on 
-    // our struct size memory allocate agum in case fail achi na NULL assign agum
-    // To know that memory allocated or not we are using the below condition.
-    if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
-        exit(1);
+// Head pointer to point to the first node
+struct Node *head = NULL;
+
+// Function to create a new node and insert it at a specific position
+void insert_at_position(int val, int pos) {
+    // 1. Create memory for the new node
+    struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
+    // 2. Initialize the node memory
+    newnode->data = val;
+    newnode->addr = NULL;
+
+    // 3. Handle the case for insertion at the beginning (position 1)
+    if (pos == 1) {
+        newnode->addr = head;
+        head = newnode;
+        return;
     }
-    new_node->data = data;
-    new_node->link = NULL;
-    return new_node;
+
+    // 4. Traverse the list to find the position
+    struct Node *temp = head;
+    for (int i = 1; i < pos - 1 && temp != NULL; i++) {
+        temp = temp->addr;
+    }
+
+    // 5. If the position is invalid, handle the error
+    if (temp == NULL) {
+        printf("Invalid position!\n");
+        free(newnode);
+        return;
+    }
+
+    // 6. Insert the new node at the correct position
+    newnode->addr = temp->addr;
+    temp->addr = newnode;
 }
 
 // Function to display the linked list
-void display_list(struct node *head) {
+void display() {
     if (head == NULL) {
         printf("The list is empty.\n");
         return;
     }
-    struct node *temp = head;
-    printf("Linked List: ");
+    struct Node *temp = head;
     while (temp != NULL) {
         printf("%d ", temp->data);
-        temp = temp->link;
+        temp = temp->addr;
     }
+    printf("\n");
 }
-struct node* insert_at_position(struct node *head, int data, int position) {
-    struct node *new_node = create_node(data);
-    if (position == 1) {
-        new_node->link = head;
-        return new_node;
+
+int main()
+{
+    int val,pos;
+    // add the value to linkedlist until you given -1 as input
+    while(val!=-1){
+        scanf("%d",&val);
+            if (val==-1){
+                break;
+            }
+            scanf("%d",&pos);
+            insert_at_position(val,pos);
     }
-    struct node *temp = head;
-    for (int i = 1; i < position - 1 && temp != NULL; i++) {
-        temp = temp->link;
-    }
-    if (temp == NULL) {
-        printf("Invalid position!\n");
-        free(new_node);
-        return head;
-    }
-    new_node->link = temp->link;
-    temp->link = new_node;
-    return head;
-}
-int main() {
-    struct node *head = NULL;
-    head=insert_at_position(head,10,1);
-    head=insert_at_position(head,30,2);
-    head=insert_at_position(head,50,3);
-    head=insert_at_position(head,40,4);
-    head=insert_at_position(head,20,5);
-    display_list(head);
+    display();
+    return 0;
 }

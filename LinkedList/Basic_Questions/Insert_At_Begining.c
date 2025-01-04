@@ -1,52 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-// Define the structure for a node
-struct node {
+// Structure of a node
+struct Node {
     int data;
-    struct node *link;
+    struct Node *addr;
 };
 
-// Function to create a new node
-struct node* create_node(int data) {
-    struct node *new_node = (struct node *)malloc(sizeof(struct node)); //Based on 
-    // our struct size memory allocate agum in case fail achi na NULL assign agum
-    // To know that memory allocated or not we are using the below condition.
-    if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
-        exit(1);
-    }
-    new_node->data = data;
-    new_node->link = NULL;
-    return new_node;
+// Head pointer to point the first node
+struct Node *head = NULL;
+
+// Function to create node memory and insert data at the beginning of the linked list
+void insert_at_beginning(int val) {
+    // 1. Create memory for the new node
+    struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
+    // 2. Initialize the node memory
+    newnode->data = val;
+    newnode->addr = NULL;
+    // 3. Connection: point the new node to the current head
+    newnode->addr = head;
+    // 4. Update head to the new node
+    head = newnode;
 }
 
 // Function to display the linked list
-void display_list(struct node *head) {
+void display() {
     if (head == NULL) {
         printf("The list is empty.\n");
         return;
     }
-    struct node *temp = head;
-    printf("Linked List: ");
+    struct Node *temp = head;
     while (temp != NULL) {
         printf("%d ", temp->data);
-        temp = temp->link;
+        temp = temp->addr;
     }
     printf("\n");
 }
-struct node* insert_at_beginning(struct node *head, int data) {
-    struct node *new_node = create_node(data);  
-    new_node->link = head;  //create aina node link ni head value tho update chestam
-    head = new_node;    //head  ni insert method lo unde  new node lo unde value tho update chestam
-    return new_node;    //new_node la irkura value return agum
-}
-int main() {
-    struct node *head = NULL;
-    head=insert_at_beginning(head, 10);
-    head=insert_at_beginning(head, 20);
-    head=insert_at_beginning(head, 30);
-    head=insert_at_beginning(head, 40);
-    head=insert_at_beginning(head, 50);
-    display_list(head);
+
+int main()
+{
+    int val;
+    // add the value to linkedlist until you given -1 as input
+    while(val!=-1){
+        scanf("%d",&val);
+            if (val!=-1){
+                insert_at_beginning(val);
+            }
+    }
+    display();
+    return 0;
 }

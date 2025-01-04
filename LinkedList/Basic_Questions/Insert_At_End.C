@@ -1,58 +1,66 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-// Define the structure for a node
-struct node {
+#include<stdio.h>
+#include<stdlib.h>
+// Structure of a node
+struct Node{
     int data;
-    struct node *link;
+    struct Node *addr;
 };
 
-// Function to create a new node
-struct node* create_node(int data) {
-    struct node *new_node = (struct node *)malloc(sizeof(struct node));
-    if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
-        exit(1);
+// head pointer to point the first node
+struct Node *head = NULL;
+
+//Function to create node memory and insert data into linkedlist
+void insert_at_end(int val)
+{
+    //1.create a memory for the node
+    struct Node *newnode = (struct Node*)malloc(sizeof(struct Node));
+    //2.initialize the node memory
+    newnode->data = val;
+    newnode->addr = NULL;
+    //3. connection
+    // check for first node connection (head to first node)
+    if(head==NULL)
+    {
+        head = newnode;
     }
-    new_node->data = data;
-    new_node->link = NULL;
-    return new_node;
+    // rest of the nodes with previous nodes
+    else
+    {
+        struct Node *temp = head;
+        // to find last node
+        while(temp->addr!=NULL)
+        {
+            temp = temp->addr;
+        }
+        temp->addr = newnode;
+    }
 }
 
 // Function to display the linked list
-void display_list(struct node *head) {
+void display() {
     if (head == NULL) {
         printf("The list is empty.\n");
         return;
     }
-    struct node *temp = head;
-    printf("Linked List: ");
+    struct Node *temp = head;
     while (temp != NULL) {
         printf("%d ", temp->data);
-        temp = temp->link;
+        temp = temp->addr;
     }
-}
-// Insert at the end
-struct node* insert_at_end(struct node *head, int data) {
-    struct node *new_node = create_node(data);
-    if (head == NULL) {
-        return new_node;
-    }
-    struct node *temp = head;
-    while (temp->link != NULL) {
-        temp = temp->link;
-    }
-    temp->link = new_node;
-    return head;            //it will return all the nodes creted 
-                            // to the variable assigned in function calling
+    printf("\n");
 }
 
-int main() {
-    struct node *head = NULL;
-    head=insert_at_end(head, 10);
-    head=insert_at_end(head, 20);
-    head=insert_at_end(head, 30);
-    head=insert_at_end(head, 40);
-    head=insert_at_end(head, 50);
-    display_list(head);
+
+int main()
+{
+    int val;
+    // add the value to linkedlist until you given -1 as input
+    while(val!=-1){
+        scanf("%d",&val);
+            if (val!=-1){
+                insert_at_end(val);
+            }
+    }
+    display();
+    return 0;
 }
