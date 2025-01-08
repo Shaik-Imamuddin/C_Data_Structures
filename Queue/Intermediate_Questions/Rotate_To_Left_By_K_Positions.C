@@ -50,7 +50,6 @@ void rotateQueueLeft(int k) {
     if (front == NULL || k == 0) {
         return;
     }
-
     // Store the first `k` elements temporarily
     char* temp[k];
     for (int i = 0; i < k; i++) {
