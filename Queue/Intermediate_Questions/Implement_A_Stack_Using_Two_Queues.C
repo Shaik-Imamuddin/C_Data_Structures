@@ -63,7 +63,6 @@ int pop() {
     }
 
     int poppedData = dequeue(&queue1Front, &queue1Rear);
-
     // Swap the roles of queue1 and queue2
     struct Node* tempFront = queue1Front;
     struct Node* tempRear = queue1Rear;

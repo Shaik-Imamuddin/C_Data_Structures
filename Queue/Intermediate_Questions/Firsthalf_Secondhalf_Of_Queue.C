@@ -6,7 +6,6 @@ struct Node {
     char* data;  // Dynamically allocated string
     struct Node* next;
 };
-
 struct Node* front = NULL;
 struct Node* rear = NULL;
 

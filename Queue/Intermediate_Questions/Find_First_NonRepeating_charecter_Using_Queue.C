@@ -66,6 +66,7 @@ void firstNonRepeating(char* stream) {
     }
 }
 
+
 int main() {
     char stream[100];
     printf("Enter the stream of characters: ");
