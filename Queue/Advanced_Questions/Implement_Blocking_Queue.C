@@ -132,7 +132,6 @@ int main() {
     // Enqueue -1 to signal consumer to stop
     enqueue(queue, -1);
     pthread_join(consumerThread, NULL);
-
     // Free the queue
     freeBlockingQueue(queue);
 

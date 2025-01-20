@@ -102,7 +102,6 @@ int main() {
 
     firstNegativeInWindow(nums, n, k);
 
-    
     free(nums);
 
     return 0;

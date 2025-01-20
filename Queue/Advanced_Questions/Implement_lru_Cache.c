@@ -128,7 +128,6 @@ void put(LRUCache* cache, int key, int value) {
             free(lru);
             cache->size--;
         }
-
         // Insert the new key-value pair
         Node* newNode = createNode(key, value);
         hashMapInsert(cache->hashMap, key, newNode);
